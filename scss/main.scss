@@ -1,0 +1,276 @@
+@import "reset";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+// VARIABLES
+$bgColor: rgb(88, 184, 239);
+$dynamicHeight: 100dvh;
+$mobile: 600px;
+$tablet: 900px;
+$basicFont: "Montserrat", sans-serif;
+
+// MIXIN
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  position: relative;
+  min-height: $dynamicHeight;
+  background-color: $bgColor;
+  color: white;
+  font-family: $basicFont;
+}
+
+// HEADER
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  left: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100px;
+  @media (max-width: $tablet) {
+    right: 25px;
+    left: 25px;
+    min-height: 50px;
+  }
+}
+
+.header__logo {
+  img {
+    width: clamp(45px, 6vw, 75px);
+  }
+}
+
+.header__day {
+  font: {
+    size: clamp(18px, 3vw, 30px);
+    weight: 500;
+  }
+}
+
+// MAIN
+.wrapper {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  bottom: 100px;
+  left: 50px;
+  @include flex-center();
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 10px;
+  @media (max-width: $tablet) {
+    top: 50px;
+    right: 25px;
+    bottom: 50px;
+    left: 25px;
+  }
+}
+
+.form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  @include flex-center();
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  @media (max-width: $mobile) {
+    width: calc(100% - 20px);
+  }
+  transition: background-color 0.3s;
+}
+
+.form:focus-within {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.form__input {
+  width: calc(100% - 40px);
+  padding: 0 10px;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.form__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.form__btn:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.weather-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media (max-width: $mobile) {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+.none {
+  display: none !important;
+}
+
+.weather {
+  @media (max-width: $mobile) {
+    width: 100%;
+  }
+}
+
+.weather__temp {
+  font: {
+    size: clamp(50px, 8vw, 72px);
+    weight: 600;
+  }
+}
+
+.weather__city {
+  font: {
+    size: clamp(30px, 5vw, 50px);
+    weight: 500;
+  }
+}
+
+.weather__type {
+  font: {
+    size: clamp(20px, 3vw, 40px);
+    weight: 100;
+  }
+}
+
+.weather-img {
+  width: clamp(150px, 20vw, 250px);
+  @media (max-width: $mobile) {
+    margin: auto;
+  }
+}
+
+.details {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  //
+  column-gap: 50px;
+  //
+}
+
+.details {
+  i {
+    font-size: clamp(35px, 6vw, 50px);
+  }
+}
+.details__humidity,
+.details__speed {
+  display: flex;
+  column-gap: 10px;
+}
+
+.humidity,
+.speed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  @media screen and (max-width: $mobile) {
+    justify-content: space-between;
+  }
+}
+
+.humidity__title,
+.speed__title {
+  font-weight: 100;
+}
+
+// SUGGEST CITY
+
+.suggest__title {
+  font: {
+    size: 24px;
+    weight: 600;
+  }
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  input {
+    font: {
+      size: 18px;
+      weight: 500;
+    }
+  }
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 50px;
+  row-gap: 10px;
+  // @media screen and (max-width: $tablet) {
+  //   grid-template-columns: repeat(2, auto);
+  // }
+  @media screen and (max-width: $mobile) {
+    grid-template-columns: repeat(1, auto);
+  }
+}
+
+// FOOTER
+
+.footer {
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  left: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  @media (max-width: $tablet) {
+    height: 50px;
+    right: 25px;
+    left: 25px;
+  }
+}
+
+.footer {
+  p {
+    font-weight: 300;
+  }
+}
+
+.creator {
+  position: relative;
+  color: white;
+}
+
+.creator::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.creator:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

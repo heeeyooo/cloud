@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cloud</title>
+    <link rel="stylesheet" href="./scss/main.css">
+    <!-- FONT ICONS -->
+    <script src="https://kit.fontawesome.com/4b11705643.js" crossorigin="anonymous"></script>
+    <!-- FAVICONS -->
+    <link rel="icon" type="image/x-icon" href="./img/logo/logo-svg-260-cloud.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/logo-png-180-cloud.png">
+</head>
+
+<body>
+    <header class="header">
+        <a class="header__logo" href="index.html">
+            <img src="./img/logo/Cloud logo.svg" alt="">
+        </a>
+        <div class="header__day">Wednesday</div>
+    </header>
+    <div class="wrapper">
+        <form action="" class="form" id="form">
+            <input type="text" class="form__input" placeholder="Enter city name">
+            <button class="form__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="suggest">
+            <p class="suggest__title">Suggested</p>
+            <!--  -->
+            <div class="grid-container">
+                <input form="form" onclick="recomendHandler(prop = 'Vilkhivtsi')" type="submit" value="Vilkhivtsi">
+                <input form="form" onclick="recomendHandler(prop = 'Kyiv')" type="submit" value="Kyiv">
+                <input form="form" onclick="recomendHandler(prop = 'Paris')" type="submit" value="Paris">
+                <input form="form" onclick="recomendHandler(prop = 'Marmaris')" type="submit" value="Marmaris">
+                <input form="form" onclick="recomendHandler(prop = 'Frankfurt')" type="submit" value="Frankfurt">
+                <input form="form" onclick="recomendHandler(prop = 'Varna')" type="submit" value="Varna">
+                <input form="form" onclick="recomendHandler(prop = 'Uzhhorod')" type="submit" value="Uzhhorod">
+                <input form="form" onclick="recomendHandler(prop = 'Lapland')" type="submit" value="Lapland">
+            </div>
+            <!--  -->
+        </div>
+        <div class="weather-container none">
+            <div class="weather">
+                <div class="weather__temp">30 °c</div>
+                <div class="weather__city">London</div>
+                <div class="weather__type">Clouds</div>
+                <div class="details">
+                    <div class="details__humidity">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div class="humidity">
+                            <div id="humidity">92%</div>
+                            <div class="humidity__title">Humidity</div>
+                        </div>
+                    </div>
+                    <div class="details__speed">
+                        <i class="fa-solid fa-wind"></i>
+                        <div class="speed">
+                            <div id="speed">0.51 km/h</div>
+                            <div class="speed__title">Wind speed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="weather-img" src="./img/weather/clear.png" alt="">
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© cloud 2024</p>
+        <p>Made by <a class="creator" href="https://stepandordiai.netlify.app/" target="_blank">Stepan Dordiai</a></p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
