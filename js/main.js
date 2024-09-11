@@ -8,6 +8,10 @@ form.onsubmit = submitHandler;
 async function submitHandler(e) {
   // CANCEL THE RELOAD
   e.preventDefault();
+
+  // HIDE SUGGESTED
+  document.querySelector(".suggest").classList.add("none");
+
   const cityInfo = await getGeo(input.value.trim());
 
   try {
