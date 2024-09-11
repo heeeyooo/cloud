@@ -133,8 +133,26 @@ body {
   }
 }
 
+.header__logo {
+  animation: movingLogo 10s infinite linear;
+}
 .header__logo img {
   width: clamp(45px, 6vw, 75px);
+}
+
+@keyframes movingLogo {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(25px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.header__logo:hover {
+  animation-play-state: paused;
 }
 
 .header__day {
