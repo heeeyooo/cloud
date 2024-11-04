@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Stepan Dordiai">
+    <meta name="keywords" content="Weather, Date">
     <title>cloud</title>
     <link rel="stylesheet" href="./scss/main.css">
     <!-- FONT ICONS -->
     <script src="https://kit.fontawesome.com/4b11705643.js" crossorigin="anonymous"></script>
     <!-- FAVICONS -->
-    <link rel="icon" type="image/x-icon" href="./img/logo/logo-svg-260-cloud.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/logo-png-180-cloud.png">
+    <link rel="icon" type="image/x-icon" href="./img/favicons/logo-svg-260-cloud.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/logo-png-180-cloud.png">
 </head>
 
 <body>
     <header class="header">
         <a class="header__logo" href="index.html">
-            <img src="./img/logo/Cloud logo.svg" alt="">
+            <img src="./img/logo/logo-cloud.svg" alt="">
         </a>
-        <div class="header__day">Wednesday</div>
+        <div class="header__day">--/--/--</div>
     </header>
     <div class="wrapper">
         <form action="" class="form" id="form">
@@ -42,31 +44,31 @@
         </div>
         <div class="weather-container none">
             <div class="weather">
-                <div class="weather__temp">30 °c</div>
-                <div class="weather__city">London</div>
-                <div class="weather__type">Clouds</div>
+                <div class="weather__temp">--°c</div>
+                <div class="weather__city">-</div>
+                <div class="weather__type">-</div>
                 <div class="details">
                     <div class="details__humidity">
                         <i class="fa-solid fa-droplet"></i>
                         <div class="humidity">
-                            <div id="humidity">92%</div>
+                            <div id="humidity">--%</div>
                             <div class="humidity__title">Humidity</div>
                         </div>
                     </div>
                     <div class="details__speed">
                         <i class="fa-solid fa-wind"></i>
                         <div class="speed">
-                            <div id="speed">0.51 km/h</div>
+                            <div id="speed">--.-- km/h</div>
                             <div class="speed__title">Wind speed</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <img class="weather-img" src="./img/weather/clear.png" alt="">
+            <img class="weather-img" src="" alt="">
         </div>
     </div>
     <footer class="footer">
-        <p>© cloud 2024</p>
+        <p>© 2024 cloud</p>
         <p>Made by <a class="creator" href="https://stepandordiai.netlify.app/" target="_blank">Stepan Dordiai</a></p>
     </footer>
     <script type="module" src="js/main.js"></script>

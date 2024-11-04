@@ -110,6 +110,7 @@ legend {
 body {
   position: relative;
   min-height: 100dvh;
+  width: 100%;
   background-color: rgb(88, 184, 239);
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -231,6 +232,13 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+.suggest {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .weather-container {
   width: 100%;
   display: flex;
@@ -332,7 +340,7 @@ body {
 }
 .grid-container input {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
 }
 @media screen and (max-width: 600px) {
   .grid-container {
