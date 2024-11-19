@@ -22,6 +22,7 @@ body {
     background-color: $bgColor;
     color: white;
     font-family: $basicFont;
+    overflow: hidden;
 }
 
 // HEADER
@@ -82,12 +83,13 @@ body {
     @include flex-center();
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 10px;
+    padding: 100px 25px 25px;
     @media (max-width: $tablet) {
         top: 50px;
         right: 25px;
         bottom: 50px;
         left: 25px;
+        padding: 0 25px 0;
     }
 }
 
@@ -142,12 +144,14 @@ body {
 
 .weather-container {
     width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    @media (max-width: $mobile) {
-        flex-direction: column-reverse;
+    @media (max-width: $tablet) {
+        flex-direction: column;
         text-align: center;
+        overflow-y: scroll;
     }
 }
 
@@ -156,7 +160,7 @@ body {
 }
 
 .weather {
-    @media (max-width: $mobile) {
+    @media (max-width: $tablet) {
         width: 100%;
     }
 }
@@ -190,7 +194,6 @@ body {
 }
 
 .details {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -273,18 +276,20 @@ body {
     }
 }
 
-.footer {
-    p {
-        font-weight: 300;
-    }
+.copyright {
+    font-size: clamp(12px, 2vw, 16px);
 }
 
 .creator {
+    font-size: clamp(12px, 2vw, 16px);
+}
+
+.creator a {
     position: relative;
     color: white;
 }
 
-.creator::after {
+.creator a::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -297,7 +302,64 @@ body {
     transition: transform 0.3s ease-out;
 }
 
-.creator:hover::after {
+.creator a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+.five-days-weather {
+    width: 30%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    background-color: rgba(255, 255, 255, 0.189);
+    border-radius: 15px;
+    padding: 25px;
+    @media (max-width: $tablet) {
+        width: 100%;
+    }
+}
+
+.days-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // place-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.days-container img:nth-child(2) {
+    justify-self: center;
+}
+
+.days-container p:nth-child(3) {
+    justify-self: flex-end;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.twenty4-hours-weather {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    column-gap: 25px;
+    overflow-x: scroll;
+}
+
+.weather-container-data {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    @media (max-width: $tablet) {
+        width: 100%;
+    }
 }
