@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Stepan Dordiai">
-    <meta name="keywords" content="Weather, Date">
-    <title>cloud</title>
+    <meta name="keywords" content="Weather daily, weather hourly, date">
+    <title>cloud.</title>
     <link rel="stylesheet" href="./scss/main.css">
     <!-- FONT ICONS -->
     <script src="https://kit.fontawesome.com/4b11705643.js" crossorigin="anonymous"></script>
@@ -19,6 +19,7 @@
     <header class="header">
         <a class="header__logo" href="index.html">
             <img src="./img/logo/logo-cloud.svg" alt="">
+            <p>cloud.</p>
         </a>
         <div class="header__day">--/--/--</div>
     </header>
@@ -29,7 +30,6 @@
         </form>
         <div class="suggest">
             <p class="suggest__title">Suggested</p>
-            <!--  -->
             <div class="grid-container">
                 <input class="suggest-form" form="form" type="submit" value="Vilkhivtsi">
                 <input class="suggest-form" form="form" type="submit" value="Kyiv">
@@ -39,70 +39,55 @@
                 <input class="suggest-form" form="form" type="submit" value="Varna">
                 <input class="suggest-form" form="form" type="submit" value="Uzhhorod">
                 <input class="suggest-form" form="form" type="submit" value="Lapland">
+                <input class="suggest-form" form="form" type="submit" value="New York">
+                <input class="suggest-form" form="form" type="submit" value="London">
+                <input class="suggest-form" form="form" type="submit" value="Cologne">
+                <input class="suggest-form" form="form" type="submit" value="Abu Dhabi">
             </div>
-            <!--  -->
         </div>
         <div class="weather-container none">
-            <div class="weather-container-data">
+            <div class="left-section">
                 <div class="weather">
+                    <div>
+                        <div class="weather__temp">--°c</div>
+                        <div class="weather__city">-</div>
+                        <div class="weather__type">-</div>
+                    </div>
                     <img class="weather-img" src="" alt="">
-                    <div class="weather__temp">--°c</div>
-                    <div class="weather__city">-</div>
-                    <div class="weather__type">-</div>
-                    <div class="details">
-                        <div class="details__humidity">
-                            <i class="fa-solid fa-droplet"></i>
-                            <div class="humidity">
-                                <div id="humidity">--%</div>
-                                <div class="humidity__title">Humidity</div>
-                            </div>
+                </div>
+                <div class="weather-hourly-container"></div>
+            </div>
+            <div class="right-section">
+                <div class="weather-daily-container">
+                    <div class="day-container first-day-container"></div>
+                    <div class="day-container second-day-container"></div>
+                    <div class="day-container third-day-container"></div>
+                    <div class="day-container fourth-day-container"></div>
+                    <div class="day-container fifth-day-container"></div>
+                </div>
+                <div class="details">
+                    <div class="details__humidity">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div class="humidity">
+                            <div id="humidity">--%</div>
+                            <div class="humidity__title">Humidity</div>
                         </div>
-                        <div class="details__speed">
-                            <i class="fa-solid fa-wind"></i>
-                            <div class="speed">
-                                <div id="speed">--.-- km/h</div>
-                                <div class="speed__title">Wind speed</div>
-                            </div>
+                    </div>
+                    <div class="details__speed">
+                        <i class="fa-solid fa-wind"></i>
+                        <div class="speed">
+                            <div id="speed">--.-- km/h</div>
+                            <div class="speed__title">Wind speed</div>
                         </div>
                     </div>
                 </div>
-                <div class="twenty4-hours-weather">
-
-                </div>
             </div>
-            <div class="five-days-weather">
-                <div class="days-container first-day-container">
-                    <p>Today</p>
-                    <p>Cloudy</p>
-                    <p>7&deg;</p>
-                </div>
-                <div class="days-container second-day-container">
-                    <p>Today</p>
-                    <p>Cloudy</p>
-                    <p>7&deg;</p>
-                </div>
-                <div class="days-container third-day-container">
-                    <p>Today</p>
-                    <p>Cloudy</p>
-                    <p>7&deg;</p>
-                </div>
-                <div class="days-container fourth-day-container">
-                    <p>Today</p>
-                    <p>Cloudy</p>
-                    <p>7&deg;</p>
-                </div>
-                <div class="days-container fifth-day-container">
-                    <p>Today</p>
-                    <p>Cloudy</p>
-                    <p>7&deg;</p>
-                </div>
-            </div>
-
         </div>
     </div>
     <footer class="footer">
-        <p class="copyright">© 2024 cloud</p>
-        <p class="creator">Made by <a href="https://stepandordiai.netlify.app/" target="_blank">Stepan Dordiai</a></p>
+        <p class="copyright">© 2024 cloud.</p>
+        <p class="creator">Made with <img src="./img/logo/logo-cloud.svg" alt=""> by <a
+                href="https://stepandordiai.netlify.app/" target="_blank">Stepan Dordiai</a></p>
     </footer>
     <script type="module" src="js/main.js"></script>
 </body>

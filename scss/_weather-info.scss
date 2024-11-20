@@ -1,0 +1,42 @@
+@import "variables";
+@import "mixins";
+
+.details {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    @media (max-width: $tablet) {
+        height: 80px;
+        flex-shrink: 0;
+    }
+}
+
+.details__humidity,
+.details__speed {
+    @include flex-center();
+    column-gap: 10px;
+    i {
+        // font-size: clamp(25px, 6vw, 25px);
+        font-size: 30px;
+    }
+}
+
+.humidity,
+.speed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    @media screen and (max-width: $mobile) {
+        justify-content: space-between;
+    }
+}
+
+.humidity__title,
+.speed__title {
+    // font-size: 18px;
+    font-weight: 100;
+}

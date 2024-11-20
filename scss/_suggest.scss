@@ -1,0 +1,34 @@
+@import "variables";
+
+.suggest {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.suggest__title {
+    font: {
+        size: 24px;
+        weight: 600;
+    }
+    margin-bottom: 10px;
+}
+
+.grid-container {
+    input {
+        font: {
+            size: 18px;
+            weight: 400;
+        }
+    }
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 50px;
+    row-gap: 10px;
+    justify-items: flex-start;
+    @media screen and (max-width: $mobile) {
+        grid-template-columns: repeat(1, auto);
+        justify-items: center;
+    }
+}

@@ -1,3 +1,4 @@
+import "./headerData.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.13/esm/index.js";
 
 // ALLOWS HOVER ON TOUCH DEVICES
@@ -32,6 +33,14 @@ async function submitHandler(e) {
         cityInfo[0]["lon"]
     );
 
+    const weatherData = {
+        temp: weatherInfo.list[0].main.temp,
+        name: cityInfo[0].name,
+        type: weatherInfo.list[0].weather[0].main,
+        humidity: weatherInfo.list[0].main.humidity,
+        speed: weatherInfo.list[0].wind.speed,
+    };
+
     const today = dayjs();
 
     const firstDay = today;
@@ -44,25 +53,9 @@ async function submitHandler(e) {
 
     const fifthDay = today.add(4, "days");
 
-    // console.log(formatCustomDay(firstDay));
-    // console.log(formatCustomDay(secondDay));
-    // console.log(formatCustomDay(thirdDay));
-    // console.log(formatCustomDay(fourthDay));
-    // console.log(formatCustomDay(fifthDay
-
     function formatCustomDay(param) {
         return param.format("YYYY-M-D");
     }
-
-    const weatherData = {
-        temp: weatherInfo.list[0].main.temp,
-        name: cityInfo[0].name,
-        type: weatherInfo.list[0].weather[0].main,
-        humidity: weatherInfo.list[0].main.humidity,
-        speed: weatherInfo.list[0].wind.speed,
-    };
-
-    console.log(weatherInfo.list);
 
     let firstDayHTML = "";
     weatherInfo.list
@@ -72,8 +65,12 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 firstDayHTML += ` <p>Today</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
-                    <p>${Math.round(item.main.temp)}&deg;</p>`;
+                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <div>
+                    <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
+                    <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
+                    </div >
+                        `;
             }
         });
 
@@ -86,10 +83,13 @@ async function submitHandler(e) {
         })
         .forEach((item, index) => {
             if (index === 0) {
-                // console.log(item);
                 secondDayHTML += ` <p>${secondDay.format("dddd")}</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
-                    <p>${Math.round(item.main.temp)}&deg;</p>`;
+                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <div>
+                   <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
+                    <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
+                    </div >
+                    `;
             }
         });
 
@@ -102,10 +102,13 @@ async function submitHandler(e) {
         })
         .forEach((item, index) => {
             if (index === 0) {
-                // console.log(item);
                 thirdDayHTML += ` <p>${thirdDay.format("dddd")}</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
-                    <p>${Math.round(item.main.temp)}&deg;</p>`;
+                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <div>
+                  <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
+                    <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
+                    </div >
+                    `;
             }
         });
 
@@ -118,10 +121,13 @@ async function submitHandler(e) {
         })
         .forEach((item, index) => {
             if (index === 0) {
-                // console.log(item);
                 fourthDayHTML += ` <p>${fourthDay.format("dddd")}</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
-                    <p>${Math.round(item.main.temp)}&deg;</p>`;
+                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <div>
+                 <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
+                    <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
+                    </div >
+                    `;
             }
         });
 
@@ -134,10 +140,13 @@ async function submitHandler(e) {
         })
         .forEach((item, index) => {
             if (index === 0) {
-                // console.log(item);
                 fifthDayHTML += `<p>${fifthDay.format("dddd")}</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
-                    <p>${Math.round(item.main.temp)}&deg;</p>`;
+                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <div>
+               <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
+                    <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
+                    </div >
+                    `;
             }
         });
 
@@ -154,7 +163,8 @@ async function submitHandler(e) {
                     `;
     });
 
-    document.querySelector(".twenty4-hours-weather").innerHTML = firstTimeHTML;
+    document.querySelector(".weather-hourly-container").innerHTML =
+        firstTimeHTML;
 
     renderWeatherData(weatherData);
 
@@ -162,6 +172,8 @@ async function submitHandler(e) {
     input.value = "";
     //   BLUR INPUT
     input.blur();
+
+    document.querySelector(".weather-container").scrollTo(0, 0);
 }
 
 // GET GEOLOCATION LAT AND LON
@@ -175,7 +187,6 @@ async function getGeo(name) {
 // GET WEATHER
 async function getWeather(lat, lon) {
     // UNITS=METRIC FOR CELCIUM
-    // const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${API_KEY}`;
     const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${lat}&lon=${lon}&appid=${API_KEY}`;
     const response = await fetch(weatherUrl);
     const data = await response.json();
@@ -198,34 +209,6 @@ function renderWeatherData(data) {
     speed.innerText = data.speed + " km/h";
     weatherImg.src = `./img/weather/${data.type.toLowerCase()}.png`;
 }
-
-const day = document.querySelector(".header__day");
-
-// day.innerHTML = todayString;
-
-// OLD METHOD WITHOUT DAYJS EXTERNAL LIBRARY
-// switch (new Date().getDay()) {
-//     case 0:
-//         day.textContent = "Sunday, " + new Date().getDate();
-//         break;
-//     case 1:
-//         day.textContent = "Monday, " + new Date().getDate();
-//         break;
-//     case 2:
-//         day.textContent = "Tuesday, " + new Date().getDate();
-//         break;
-//     case 3:
-//         day.textContent = "Wednesday, " + new Date().getDate();
-//         break;
-//     case 4:
-//         day.textContent = "Thursday, " + new Date().getDate();
-//         break;
-//     case 5:
-//         day.textContent = "Friday, " + new Date().getDate();
-//         break;
-//     case 6:
-//         day.textContent = "Saturday, " + new Date().getDate();
-// }
 
 document.querySelectorAll(".suggest-form").forEach((suggestForm) => {
     suggestForm.addEventListener("click", () => {

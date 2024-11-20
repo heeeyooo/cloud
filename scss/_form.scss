@@ -1,0 +1,42 @@
+@import "mixins";
+@import "variables";
+
+.form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    @include flex-center();
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        width: calc(100% - 20px);
+    }
+    transition: background-color 0.3s;
+}
+
+.form:focus-within {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.form__input {
+    width: calc(100% - 40px);
+    padding: 0 10px;
+}
+
+::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.form__btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.form__btn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}

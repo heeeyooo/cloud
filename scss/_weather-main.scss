@@ -1,0 +1,45 @@
+@import "variables";
+
+.weather {
+    text-align: start;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    @media (max-width: $tablet) {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: 300px;
+    }
+}
+
+.weather__temp {
+    font: {
+        size: clamp(50px, 8vw, 72px);
+        weight: 600;
+    }
+}
+
+.weather__city {
+    font: {
+        size: clamp(30px, 5vw, 50px);
+        weight: 500;
+    }
+}
+
+.weather__type {
+    font: {
+        size: clamp(20px, 3vw, 40px);
+        weight: 100;
+    }
+}
+
+.weather-img {
+    width: 200px;
+    @media (max-width: $tablet) {
+        width: 100px;
+    }
+}
