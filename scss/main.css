@@ -226,9 +226,7 @@ legend {
 .header__logo {
   display: flex;
   justify-content: center;
-  align-items: center;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  align-items: flex-end;
 }
 .header__logo img {
   width: clamp(45px, 6vw, 65px);
@@ -236,6 +234,7 @@ legend {
 }
 .header__logo p {
   font-size: clamp(24px, 4vw, 30px);
+  line-height: 100%;
   color: white;
 }
 
@@ -244,7 +243,7 @@ legend {
     transform: translateX(0);
   }
   50% {
-    transform: translateX(25px);
+    transform: translateX(10px);
   }
   100% {
     transform: translateX(0);
