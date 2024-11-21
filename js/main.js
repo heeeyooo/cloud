@@ -65,7 +65,8 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 firstDayHTML += ` <p>Today</p>
-                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                                       <img src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
+
                     <div>
                     <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
                     <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
@@ -84,7 +85,8 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 secondDayHTML += ` <p>${secondDay.format("dddd")}</p>
-                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                                   <img src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
+
                     <div>
                    <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
                     <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
@@ -103,7 +105,8 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 thirdDayHTML += ` <p>${thirdDay.format("dddd")}</p>
-                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                                       <img src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
+
                     <div>
                   <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
                     <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
@@ -122,7 +125,8 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 fourthDayHTML += ` <p>${fourthDay.format("dddd")}</p>
-                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                                       <img src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
+
                     <div>
                  <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
                     <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
@@ -141,7 +145,7 @@ async function submitHandler(e) {
         .forEach((item, index) => {
             if (index === 0) {
                 fifthDayHTML += `<p>${fifthDay.format("dddd")}</p>
-                    <img src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <img src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
                     <div>
                <p>H:${Math.ceil(item.main.temp_max)}&deg;</p>
                     <p>L:${Math.floor(item.main.temp_min)}&deg;</p>
@@ -157,7 +161,7 @@ async function submitHandler(e) {
         firstTimeHTML += `
                 <div>
                     <p>${item.dt_txt.slice(11, 16)}</p>
-                    <img width="20px" src="./img/weather/${item.weather[0].main.toLowerCase()}.png"/>
+                    <img width="30px" src="./img/weather/flat-icons/${item.weather[0].main.toLowerCase()}.svg"/>
                     <p>${Math.round(item.main.temp)}&deg;</p>
                 </div>
                     `;
@@ -166,11 +170,23 @@ async function submitHandler(e) {
     document.querySelector(".weather-hourly-container").innerHTML =
         firstTimeHTML;
 
-    renderWeatherData(weatherData);
+    try {
+        renderWeatherData(weatherData);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        setTimeout(() => {
+            document
+                .querySelector(".left-section")
+                .classList.add("left-section--active");
+            document
+                .querySelector(".right-section")
+                .classList.add("left-section--active");
+        }, 1);
+    }
 
-    // EMPTY INPUT
     input.value = "";
-    //   BLUR INPUT
+
     input.blur();
 
     document.querySelector(".weather-container").scrollTo(0, 0);
@@ -207,7 +223,7 @@ function renderWeatherData(data) {
     type.innerText = data.type;
     humidity.innerText = data.humidity + "%";
     speed.innerText = data.speed + " km/h";
-    weatherImg.src = `./img/weather/${data.type.toLowerCase()}.png`;
+    weatherImg.src = `./img/weather/flat-icons/${data.type.toLowerCase()}.svg`;
 }
 
 document.querySelectorAll(".suggest-form").forEach((suggestForm) => {
@@ -222,3 +238,15 @@ function recomendHandler(prop) {
     document.querySelector(".suggest").classList.add("none");
     input.value = prop;
 }
+
+function changeTheme() {
+    const variables = document.querySelector(":root");
+    const date = new Date().getHours();
+    if (date >= 7 && date < 18) {
+        variables.style.setProperty("--bg-color", "rgb(88, 184, 239)");
+    } else if (date >= 18 && date < 7) {
+        variables.style.setProperty("--bg-color", "rgb(2, 30, 131)");
+    }
+}
+
+changeTheme();

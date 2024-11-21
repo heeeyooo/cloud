@@ -15,7 +15,7 @@ body {
     position: relative;
     min-height: $dynamicHeight;
     width: 100%;
-    background-color: $bgColor;
+    background-color: var(--bg-color);
     color: white;
     font-family: $basicFont;
     overflow: hidden;
@@ -63,10 +63,18 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
     @media (max-width: $tablet) {
         width: 100%;
         min-height: min-content;
     }
+}
+
+.left-section--active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .right-section {
@@ -75,6 +83,9 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
     @media (max-width: $tablet) {
         width: 100%;
         min-height: min-content;

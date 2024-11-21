@@ -111,10 +111,15 @@ legend {
   display: block;
 }
 
+:root {
+  --bg-color: rgb(88, 184, 239);
+}
+
 .form {
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,6 +165,10 @@ legend {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+:root {
+  --bg-color: rgb(88, 184, 239);
+}
+
 .suggest {
   position: absolute;
   top: 50%;
@@ -190,6 +199,10 @@ legend {
     grid-template-columns: repeat(1, auto);
     justify-items: center;
   }
+}
+
+:root {
+  --bg-color: rgb(88, 184, 239);
 }
 
 .header {
@@ -246,6 +259,10 @@ legend {
   font-weight: 500;
 }
 
+:root {
+  --bg-color: rgb(88, 184, 239);
+}
+
 .weather {
   text-align: start;
   height: 80%;
@@ -280,12 +297,16 @@ legend {
 }
 
 .weather-img {
-  width: 200px;
+  width: 250px;
 }
 @media (max-width: 900px) {
   .weather-img {
     width: 100px;
   }
+}
+
+:root {
+  --bg-color: rgb(88, 184, 239);
 }
 
 .weather-daily-container {
@@ -316,7 +337,7 @@ legend {
 
 .day-container img {
   justify-self: center;
-  width: 30px;
+  width: 40px;
 }
 
 .day-container div {
@@ -327,6 +348,10 @@ legend {
 }
 .day-container div p:nth-child(2) {
   opacity: 0.5;
+}
+
+:root {
+  --bg-color: rgb(88, 184, 239);
 }
 
 .weather-hourly-container {
@@ -360,6 +385,10 @@ legend {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+:root {
+  --bg-color: rgb(88, 184, 239);
 }
 
 .details {
@@ -462,11 +491,15 @@ legend {
   transform-origin: bottom left;
 }
 
+:root {
+  --bg-color: rgb(88, 184, 239);
+}
+
 body {
   position: relative;
   min-height: 100dvh;
   width: 100%;
-  background-color: rgb(88, 184, 239);
+  background-color: var(--bg-color);
   color: white;
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
@@ -521,6 +554,9 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
 }
 @media (max-width: 900px) {
   .left-section {
@@ -530,12 +566,20 @@ body {
   }
 }
 
+.left-section--active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 .right-section {
   height: 100%;
   width: 30%;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
 }
 @media (max-width: 900px) {
   .right-section {
