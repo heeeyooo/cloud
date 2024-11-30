@@ -1,10 +1,10 @@
 import "./headerData.js";
+import { API_KEY } from "./../secret/secret.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.13/esm/index.js";
 
 // ALLOWS HOVER ON TOUCH DEVICES
 addEventListener("touchstart", function () {}, true);
 
-const API_KEY = "524fc2453b5dfb071ec3b8986ce771e0";
 const form = document.querySelector("#form");
 const input = document.querySelector(".form__input");
 
@@ -54,7 +54,7 @@ async function submitHandler(e) {
     const fifthDay = today.add(4, "days");
 
     function formatCustomDay(param) {
-        return param.format("YYYY-M-D");
+        return param.format("YYYY-M-DD");
     }
 
     let firstDayHTML = "";
@@ -80,6 +80,7 @@ async function submitHandler(e) {
     let secondDayHTML = "";
     weatherInfo.list
         .filter((item) => {
+            // console.log(item.dt_txt.includes(formatCustomDay(secondDay)));
             return item.dt_txt.includes(formatCustomDay(secondDay));
         })
         .forEach((item, index) => {
