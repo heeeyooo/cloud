@@ -54,8 +54,10 @@ async function submitHandler(e) {
     const fifthDay = today.add(4, "days");
 
     function formatCustomDay(param) {
-        return param.format("YYYY-M-DD");
+        return param.format("YYYY-MM-DD");
     }
+
+    console.log(weatherInfo.list);
 
     let firstDayHTML = "";
     weatherInfo.list
