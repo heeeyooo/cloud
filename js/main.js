@@ -16,7 +16,6 @@ async function submitHandler(e) {
     e.preventDefault();
 
     // HIDE SUGGESTED
-    document.querySelector(".suggest").classList.add("none");
 
     const cityInfo = await getGeo(input.value.trim());
 
@@ -24,9 +23,20 @@ async function submitHandler(e) {
         if (!input.value.trim()) throw "Enter city name";
         if (!cityInfo.length) throw "Enter correct city name";
     } catch (err) {
-        alert(err);
+        // alert(err);
+        const popUp = document.createElement("div");
+        popUp.classList.add("pop-up");
+        popUp.textContent = err;
+        document.body.append(popUp);
+
+        // document.querySelector(".suggest").classList.remove("none");
         input.value = "";
+        setTimeout(() => {
+            popUp.remove();
+        }, 3000);
     }
+
+    // document.querySelector(".suggest").classList.add("none");
 
     const weatherInfo = await getWeather(
         cityInfo[0]["lat"],
@@ -57,8 +67,6 @@ async function submitHandler(e) {
         return param.format("YYYY-MM-DD");
     }
 
-    console.log(weatherInfo.list);
-
     let firstDayHTML = "";
     weatherInfo.list
         .filter((item) => {
@@ -82,7 +90,6 @@ async function submitHandler(e) {
     let secondDayHTML = "";
     weatherInfo.list
         .filter((item) => {
-            // console.log(item.dt_txt.includes(formatCustomDay(secondDay)));
             return item.dt_txt.includes(formatCustomDay(secondDay));
         })
         .forEach((item, index) => {
@@ -192,7 +199,7 @@ async function submitHandler(e) {
 
     input.blur();
 
-    document.querySelector(".weather-container").scrollTo(0, 0);
+    document.querySelector(".wrapper").scrollTo(0, 0);
 }
 
 // GET GEOLOCATION LAT AND LON
@@ -214,6 +221,7 @@ async function getWeather(lat, lon) {
 
 // RENDER WEATHER DATA
 function renderWeatherData(data) {
+    document.querySelector(".suggest").classList.add("none");
     document.querySelector(".weather-container").classList.remove("none");
     const temp = document.querySelector(".weather__temp");
     const city = document.querySelector(".weather__city");

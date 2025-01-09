@@ -116,22 +116,18 @@ legend {
 }
 
 .form {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 300px;
   height: 40px;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
 @media (max-width: 600px) {
   .form {
-    width: calc(100% - 20px);
+    width: 100%;
   }
 }
 
@@ -157,12 +153,12 @@ legend {
 .form__btn {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 10px;
   transition: background-color 0.3s;
 }
 
 .form__btn:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 :root {
@@ -170,10 +166,8 @@ legend {
 }
 
 .suggest {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  margin: 100px 0;
 }
 
 .suggest__title {
@@ -268,7 +262,7 @@ legend {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 10px;
 }
@@ -498,47 +492,73 @@ body {
   position: relative;
   min-height: 100dvh;
   width: 100%;
-  background-color: var(--bg-color);
+  background: var(--bg-color);
   color: white;
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 }
 
+.pop-up {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  border-radius: 10px;
+  animation: revealPopUp 0.5s forwards;
+}
+
+@keyframes revealPopUp {
+  to {
+    opacity: 1;
+    top: 150px;
+  }
+}
 .wrapper {
   position: absolute;
   top: 80px;
   right: 20px;
   bottom: 50px;
   left: 20px;
+  height: calc(100% - 130px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.1);
+  justify-content: flex-start;
+  align-items: flex-end;
+  row-gap: 10px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 60px 10px 10px;
+  padding: 10px 10px;
+  overflow-y: scroll;
 }
 @media (max-width: 900px) {
   .wrapper {
+    height: calc(100% - 100px);
+    padding: 10px 10px;
     top: 50px;
     right: 10px;
     bottom: 50px;
     left: 10px;
-    padding: 0 10px 0;
   }
 }
 
 .weather-container {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 40px - 10px);
   display: flex;
   -moz-column-gap: 10px;
        column-gap: 10px;
-  overflow-y: scroll;
 }
 @media (max-width: 900px) {
   .weather-container {
     flex-direction: column;
-    padding: 60px 0 10px;
     row-gap: 10px;
   }
 }
@@ -585,5 +605,6 @@ body {
     width: 100%;
     min-height: -moz-min-content;
     min-height: min-content;
+    padding-bottom: 10px;
   }
 }/*# sourceMappingURL=main.css.map */

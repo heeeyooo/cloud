@@ -2,17 +2,13 @@
 @import "variables";
 
 .form {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
     @include flex-center();
     width: 300px;
     height: 40px;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
     @media (max-width: $mobile) {
-        width: calc(100% - 20px);
+        width: 100%;
     }
     transition: background-color 0.3s;
 }
@@ -34,10 +30,10 @@
 .form__btn {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     transition: background-color 0.3s;
 }
 
 .form__btn:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
 }

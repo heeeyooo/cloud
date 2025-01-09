@@ -1,10 +1,8 @@
 @import "variables";
 
 .suggest {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    align-self: center;
+    margin: 100px 0;
 }
 
 .suggest__title {
