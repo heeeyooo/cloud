@@ -437,9 +437,18 @@ legend {
   bottom: 0;
   left: 25px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
   height: 50px;
+}
+.footer div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.footer div p {
+  font-size: clamp(12px, 2vw, 16px);
 }
 @media (max-width: 900px) {
   .footer {
@@ -473,7 +482,7 @@ legend {
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: white;
+  background: white;
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
