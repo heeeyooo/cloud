@@ -350,21 +350,12 @@ legend {
 .weather-hourly-container {
   width: 100%;
   height: 20%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -moz-column-gap: 25px;
-       column-gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
   overflow-x: scroll;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 10px;
-}
-@media (max-width: 1000px) {
-  .weather-hourly-container {
-    justify-content: flex-start;
-  }
 }
 @media (max-width: 900px) {
   .weather-hourly-container {
@@ -373,11 +364,13 @@ legend {
   }
 }
 .weather-hourly-container div {
+  margin: 0 15px;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
 :root {
@@ -458,16 +451,8 @@ legend {
   }
 }
 
-.copyright {
-  font-size: clamp(12px, 2vw, 16px);
-}
-
 .creator {
   font-size: clamp(12px, 2vw, 16px);
-}
-.creator img {
-  width: clamp(20px, 3vw, 25px);
-  vertical-align: sub;
 }
 
 .creator a {
@@ -569,6 +554,8 @@ body {
   .weather-container {
     flex-direction: column;
     row-gap: 10px;
+    height: -moz-min-content;
+    height: min-content;
   }
 }
 
@@ -578,7 +565,7 @@ body {
 
 .left-section {
   height: 100%;
-  width: 70%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -601,7 +588,7 @@ body {
 
 .right-section {
   height: 100%;
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -614,6 +601,5 @@ body {
     width: 100%;
     min-height: -moz-min-content;
     min-height: min-content;
-    padding-bottom: 10px;
   }
 }/*# sourceMappingURL=main.css.map */

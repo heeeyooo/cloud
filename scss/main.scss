@@ -79,6 +79,7 @@ body {
     @media (max-width: $tablet) {
         flex-direction: column;
         row-gap: 10px;
+        height: min-content;
     }
 }
 
@@ -88,7 +89,7 @@ body {
 
 .left-section {
     height: 100%;
-    width: 70%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -108,7 +109,7 @@ body {
 
 .right-section {
     height: 100%;
-    width: 30%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -118,6 +119,5 @@ body {
     @media (max-width: $tablet) {
         width: 100%;
         min-height: min-content;
-        padding-bottom: 10px;
     }
 }
